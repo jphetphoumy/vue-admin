@@ -1,5 +1,6 @@
 const Ipsum = require("bavaria-ipsum");
 const randomDate = require("../utils/random-date-generator")
+const { generateModel } = require('fake-data-generator')
 
 module.exports = function (app) {
 
@@ -12,6 +13,10 @@ module.exports = function (app) {
     return aIsoDate.toISOString()
   }
 
+  const amountArg = 40;
+  const modelArg = "authors";
+  const outputType = "object"
+  const authors = generateModel({ amountArg, modelArg, outputType})
   const generateRandomAuthor = id => {
     return {
       id,
@@ -20,12 +25,6 @@ module.exports = function (app) {
       birthdate: formatDate(randomDate(startDate, finishDate))
     };
   }
-
-  const authors = [
-    generateRandomAuthor(1),
-    generateRandomAuthor(2),
-    generateRandomAuthor(3)
-  ];
 
   app.get("/api/authors", (req, res) => {
     res.json(authors);

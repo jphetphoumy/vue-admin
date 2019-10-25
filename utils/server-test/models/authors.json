@@ -1,0 +1,23 @@
+{
+  "config": {
+    "locale": "en"
+  },
+  "model": {
+    "id": {
+      "type": "randomNumberBetween",
+      "value": [1, 2500000]
+    },
+    "name": {
+      "type": "faker",
+      "value": "name.firstName"
+    },
+    "lastname" : {
+      "type": "faker",
+      "value": "name.lastName"
+    },
+    "birtdate": {
+      "type": "faker",
+      "value": "date.between"
+    }
+  }
+}
